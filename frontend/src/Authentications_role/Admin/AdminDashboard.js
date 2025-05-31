@@ -66,39 +66,6 @@ const AdminDashboard = () => {
     setZoomLevel(1);
   };
 
-  const changeBgColor = (color) => {
-    setBgColor(color);
-  };
-
-const handleImageUpload = (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  // Check if file is an image
-  if (!file.type.match('image.*')) {
-    alert('Please select an image file (jpg, png, gif)');
-    return;
-  }
-
-  // Check file size (max 2MB)
-  if (file.size > 2 * 1024 * 1024) {
-    alert('Image size should be less than 2MB');
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onloadstart = () => {
-    // You could add a loading state here
-  };
-  reader.onload = (event) => {
-    setSidebarImage(event.target.result);
-  };
-  reader.onerror = () => {
-    alert('Error reading file');
-  };
-  reader.readAsDataURL(file);
-};
-
   useEffect(() => {
     document.body.className = darkMode ? "dark-mode" : "light-mode";
   }, [darkMode]);
@@ -120,6 +87,7 @@ const handleImageUpload = (e) => {
             <SidebarHeader>
               <div className="sidebar-header">
                 {!menuCollapse && <h3>Admin Dashboard</h3>}
+                
                 <div className="sidebar-toggle" onClick={menuIconClick}>
                   {menuCollapse ? (
                     <FiArrowRightCircle />
@@ -127,17 +95,25 @@ const handleImageUpload = (e) => {
                     <FiArrowLeftCircle />
                   )}
                 </div>
+               
               </div>
+              
             </SidebarHeader>
 
             <SidebarContent>
               <Menu iconShape="circle">
                 <MenuItem
                   active={activeSubMenu === "dashboard"}
-                  icon={<FaTachometerAlt />}
+                  // icon={<FaTachometerAlt />}
+                  style={{ display: "flex", alignItems: "center" , justifyContent: "center"}}
                   onClick={() => handleSubMenuToggle("dashboard")}
                 >
-                  Dashboard
+                 <div>
+                  <img src={`${require("../../assets/images/AdminImg/suseeimg.PNG")}`} alt="" style={{width:"50px", height:"60px", borderRadius:"100%"}} />
+                </div>
+                <div>
+                   admin
+                </div>
                 </MenuItem>
 
                 <SubMenu
@@ -225,30 +201,6 @@ const handleImageUpload = (e) => {
 
             <div className="color-picker">
               <span>Sidebar Color: </span>
-              <button onClick={() => changeBgColor("#f5f7fa")}>Light</button>
-              <button onClick={() => changeBgColor("#2c3e50")}>Dark</button>
-              <button onClick={() => changeBgColor("#4b6cb7")}>Blue</button>
-            </div>
-
-            <div className="image-upload">
-              <input
-                type="file"
-                id="sidebar-image"
-                accept="image/*"
-                onChange={handleImageUpload}
-                style={{ display: "none" }}
-              />
-              <label htmlFor="sidebar-image" className="upload-btn">
-                {sidebarImage ? "Change Image" : "Upload BG Image"}
-              </label>
-              {sidebarImage && (
-                <button
-                  onClick={() => setSidebarImage("")}
-                  className="remove-btn"
-                >
-                  Remove Image
-                </button>
-              )}
             </div>
           </div>
 
