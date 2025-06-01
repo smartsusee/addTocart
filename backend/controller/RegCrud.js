@@ -21,6 +21,8 @@ const RegRead = async (req, res) => {
 
 const RegPost = async (req, res) => {
   try {
+    const hasspass = await bcrypt.hash(req.body.password, 10);
+    const data = new regSchema({ ...req.body, password: hasspass });
     const findEmail = await regSchema.findOne({ email: req.body.email });
     if (findEmail) {
       return res.json({
@@ -29,8 +31,6 @@ const RegPost = async (req, res) => {
       });
     }
 
-    const hasspass = await bcrypt.hash(req.body.password, 10);
-    const data = new regSchema({ ...req.body, password: hasspass });
     const SaveData = await data.save();
     res.json({ msg: "Data created successfully!", Userdata: SaveData });
   } catch (err) {
@@ -181,7 +181,7 @@ const Login = async (req, res) => {
       req.body.password,
       FindEmail.password
     );
-    if (!Findpassword) return res.json({ errmsg: "Email not found!" });
+    if (!Findpassword) return res.json({ errmsg: "password not found!" });
 
     let jwtToken = await jwt.sign(
       { name: FindEmail.name, email: FindEmail.email, role: FindEmail.role },
