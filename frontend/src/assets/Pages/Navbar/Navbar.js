@@ -21,48 +21,48 @@ function Navbar({ isLoggedIn, userType }) {
           </>
         )} */}
         {isLoggedIn && userType === "Admin" ? (
-        //   <div className="nav-item">
-        //     <Link to="/admin-dashboard" className="nav-link">
-        //       Dashboard
-        //     </Link>
-        //     <button
-        //       onClick={() => {
-        //         window.sessionStorage.clear("userType");
-        //         window.sessionStorage.clear("loggedIn");
-        //         window.location.href = "/login";
-        //       }}
-        //     >
-        //       logout
-        //     </button>
-        //   </div>
+          //   <div className="nav-item">
+          //     <Link to="/admin-dashboard" className="nav-link">
+          //       Dashboard
+          //     </Link>
+          //     <button
+          //       onClick={() => {
+          //         window.sessionStorage.clear("userType");
+          //         window.sessionStorage.clear("loggedIn");
+          //         window.location.href = "/login";
+          //       }}
+          //     >
+          //       logout
+          //     </button>
+          //   </div>
 
-<>
-</>    ) : (
-          isLoggedIn && (
-            <>
-              <div className="nav-item">
-                <Link to="/userDetails" className="nav-link">
-                  User Details
-                </Link>
+          <></>
+        ) : null
+        // isLoggedIn && (
+        //   <>
+        //     <div className="nav-item">
+        //       <Link to="/userDetails" className="nav-link">
+        //         User Details
+        //       </Link>
 
-                <li className="nav-item">
-                  <Link to="/user" className="nav-link">
-                    user
-                  </Link>
-                </li>
-                <button
-                  onClick={() => {
-                    window.sessionStorage.clear("userType");
-                    window.sessionStorage.clear("loggedIn");
-                    window.location.href = "/login";
-                  }}
-                >
-                  logout
-                </button>
-              </div>
-            </>
-          )
-        )}
+        //       <li className="nav-item">
+        //         <Link to="/user" className="nav-link">
+        //           user
+        //         </Link>
+        //       </li>
+        //       <button
+        //         onClick={() => {
+        //           window.sessionStorage.clear("userType");
+        //           window.sessionStorage.clear("loggedIn");
+        //           window.location.href = "/login";
+        //         }}
+        //       >
+        //         logout
+        //       </button>
+        //     </div>
+        //   </>
+        // )
+        }
 
         {/* <li className="nav-item">
           <Link to="/about" className="nav-link">

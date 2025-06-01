@@ -13,6 +13,9 @@ import Userpage1 from "../User/Userpage1";
 import AdminDashboard from "../Admin/AdminDashboard";
 import ProtectedRoute from "./ProdectedRoutes";
 import Navbar from "../../assets/Pages/Navbar/Navbar";
+import PieAdminDashboard from "../pages/Chart/PieChart";
+import LineChart from "../pages/Chart/LineChart";
+import BarChart from "../pages/Chart/BarChart";
 
 function App() {
   const isLoggedIn = window.sessionStorage.getItem("loggedIn"); // Check if logged in
@@ -48,6 +51,9 @@ function App() {
             ) : (
               <>
                 <Route path="/" element={<Navigate to="/admin-dashboard" />} />
+                <Route path="/pieChart" element={<PieAdminDashboard />} />
+                <Route path="/LineChart" element={<LineChart />} />
+                <Route path="/BarChart" element={<BarChart />} />
                 <Route path="/userDetails" element={<Navigate to="/" />} />
                 <Route path="/user" element={<Navigate to="/" />} />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
@@ -55,7 +61,6 @@ function App() {
             )}
           </Route>
 
-          {/* <Route path="/about" element={<About />} /> */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

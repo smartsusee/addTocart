@@ -5,17 +5,18 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import App from "./Authentications_role/ProdectRoutes/Prodect";
 // import Checkout from "./App";
-import "./assets/Css/Reg.css"
-import "./assets/Css/Login.css"
-import "./assets/Css/Navbar.css"
-import "./assets/Css/Slide.css"
+import "./assets/Css/Reg.css";
+import "./assets/Css/Login.css";
+import "./assets/Css/Navbar.css";
+import "./assets/Css/Slide.css";
 import "react-pro-sidebar/dist/css/styles.css";
-
-
+import { ToastContainer } from "react-toastify";
+import "./assets/Css/Chart.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App/>
+    <App />
+    <ToastContainer />
     {/* <App /> */}
     {/* <Checkout /> */}
   </React.StrictMode>

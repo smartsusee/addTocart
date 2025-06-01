@@ -1,24 +1,87 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authaxios } from "../../AuthAxios/Auth";
+import { Bounce, toast } from "react-toastify";
 
 const RegPage = () => {
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [details, setdetails] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [userType, setUserType] = useState("");
-  const [secretKey, setSecretKey] = useState("");
+  // const [secretKey, setSecretKey] = useState("");
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
-    if (userType === "Admin" && secretKey !== "AdarshT") {
-      e.preventDefault();
+    e.preventDefault();
+    let regData = {
+      name: details.name,
+      email: details.email,
+      password: details.password,
+    };
+    let emailValidate = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    let passwordValidate =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (
+      regData.email === "" ||
+      regData.password === "" ||
+      regData.name === ""
+    ) {
+      toast.error(" Please fill all the fields!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+      return;
+    }
+    if (!emailValidate.test(details.email)) {
+      toast.error("Please enter a valid Gmail address!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+      return;
+    } else if (!passwordValidate.test(details.password)) {
+      toast.error("Please enter a valid password.!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+      return;
+    }
+    if (userType === "Admin") {
       alert("Invalid Admin");
     } else {
-      e.preventDefault();
-      console.log("user");
-
-      navigate("/login");
+      authaxios
+        .post("/RegPost", regData)
+        .then((res) => {
+          console.log(res.data);
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -59,35 +122,28 @@ const RegPage = () => {
             <input
               type="text"
               placeholder="Secret Key"
-              onChange={(e) => setSecretKey(e.target.value)}
+              // onChange={(e) => setSecretKey(e.target.value)}
             />
           </div>
         )}
 
         <div className="form-group">
-          <label>First Name</label>
+          <label> Name</label>
           <input
             type="text"
-            placeholder="First name"
-            onChange={(e) => setFname(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Last Name</label>
-          <input
-            type="text"
-            placeholder="Last name"
-            onChange={(e) => setLname(e.target.value)}
+            value={details.name}
+            placeholder=" name"
+            onChange={(e) => setdetails({ ...details, name: e.target.value })}
           />
         </div>
 
         <div className="form-group">
           <label>Email</label>
           <input
-            type="email"
+            value={details.email}
+            type="text"
             placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setdetails({ ...details, email: e.target.value })}
           />
         </div>
 
@@ -96,7 +152,10 @@ const RegPage = () => {
           <input
             type="password"
             placeholder="Enter password"
-            onChange={(e) => setPassword(e.target.value)}
+            value={details.password}
+            onChange={(e) =>
+              setdetails({ ...details, password: e.target.value })
+            }
           />
         </div>
 

@@ -1,12 +1,12 @@
 .admin-dashboard {
   --sidebar-width: 270px;
   --sidebar-collapsed-width: 80px;
-  --primary-color: #4e73df;  // Softer blue
+  --primary-color: #4e73df; // Softer blue
   --primary-light: #7a9df5;
-  --text-color: #4a4a4a;    // Darker gray for better readability
-  --bg-color: #f8f9fc;      // Very light gray
-  --sidebar-bg: #ffffff;    // Pure white
-  --sidebar-text: #5a5c69;  // Soft dark gray
+  --text-color: #4a4a4a; // Darker gray for better readability
+  --bg-color: #f8f9fc; // Very light gray
+  --sidebar-bg: #ffffff; // Pure white
+  --sidebar-text: #5a5c69; // Soft dark gray
   --sidebar-hover: #f8f9fa; // Very light gray hover
   --transition-time: 0.4s;
   --animation-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -18,8 +18,8 @@
 
   &.dark {
     --text-color: #f8f9fa;
-    --bg-color: #1a1a2e;    // Dark blue-gray
-    --sidebar-bg: #16213e;  // Dark navy
+    --bg-color: #1a1a2e; // Dark blue-gray
+    --sidebar-bg: #16213e; // Dark navy
     --sidebar-text: #e2e2e2;
     --sidebar-hover: #0f3460;
   }
@@ -29,13 +29,12 @@
     height: 100vh;
     z-index: 1000;
     transition: all var(--transition-time) var(--animation-ease);
-    box-shadow: var(--shadow-md);
+    // box-shadow: var(--shadow-md);
 
     .pro-sidebar {
       background-size: cover;
       background-position: center;
-      transition: 
-        background-color var(--transition-time) var(--animation-ease),
+      transition: background-color var(--transition-time) var(--animation-ease),
         box-shadow var(--transition-time) var(--animation-ease);
       background-color: var(--sidebar-bg);
       box-shadow: var(--shadow-sm);
@@ -61,8 +60,7 @@
         .sidebar-toggle {
           cursor: pointer;
           font-size: 1.5rem;
-          transition: 
-            transform var(--transition-time) var(--animation-ease),
+          transition: transform var(--transition-time) var(--animation-ease),
             color 0.2s ease;
 
           &:hover {
@@ -77,9 +75,8 @@
         animation: slideInLeft 0.5s var(--animation-ease);
 
         .pro-menu-item {
-          color: var(--sidebar-text);
-          transition: 
-            color var(--transition-time) ease,
+          color: #e2e2e2;
+          transition: color var(--transition-time) ease,
             background-color var(--transition-time) ease;
           margin: 2px 8px;
           border-radius: 6px;
@@ -87,14 +84,14 @@
 
           &:hover {
             color: var(--primary-color) !important;
-            background-color: var(--sidebar-hover);
+            background-color: rgb(45, 44, 44);
           }
 
           &.active {
             color: white !important;
             background-color: var(--primary-color);
             box-shadow: var(--shadow-sm);
-            
+
             .pro-icon-wrapper {
               color: white !important;
             }
@@ -128,7 +125,7 @@
   &.collapsed {
     .sidebar-header {
       justify-content: center !important;
-      
+
       h3 {
         display: none;
       }
@@ -136,7 +133,7 @@
 
     .pro-menu-item {
       text-align: center;
-      
+
       .pro-inner-item {
         justify-content: center !important;
       }
@@ -146,8 +143,7 @@
   .main-content {
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: 
-      margin-left var(--transition-time) var(--animation-ease),
+    transition: margin-left var(--transition-time) var(--animation-ease),
       background-color var(--transition-time) ease;
     min-height: 100vh;
 
@@ -156,7 +152,8 @@
       gap: 10px;
       margin-bottom: 20px;
       padding: 15px;
-      background: rgba(var(--primary-color), 0.05);
+      box-shadow: var(--shadow-sm);
+      // background: rgba(184, 93, 202, 0.968);
       border-radius: 8px;
       animation: fadeInUp 0.6s var(--animation-ease);
       backdrop-filter: blur(5px);
@@ -172,9 +169,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        transition: 
-          transform 0.2s ease,
-          background-color 0.3s ease,
+        transition: transform 0.2s ease, background-color 0.3s ease,
           box-shadow 0.3s ease;
         box-shadow: var(--shadow-sm);
 
@@ -188,38 +183,38 @@
           transform: translateY(0);
         }
       }
-.image-upload {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+      .image-upload {
+        display: flex;
+        align-items: center;
+        gap: 10px;
 
-  .upload-btn {
-    padding: 6px 12px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      background-color: var(--primary-light);
-    }
-  }
+        .upload-btn {
+          padding: 6px 12px;
+          background-color: var(--primary-color);
+          color: white;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.3s ease;
 
-  .remove-btn {
-    padding: 6px 12px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      background-color: #c82333;
-    }
-  }
-}
+          &:hover {
+            background-color: var(--primary-light);
+          }
+        }
+
+        .remove-btn {
+          padding: 6px 12px;
+          background-color: #dc3545;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #c82333;
+          }
+        }
+      }
       .color-picker {
         display: flex;
         align-items: center;
@@ -252,8 +247,12 @@
 
   // Animations
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes fadeInUp {
@@ -281,13 +280,13 @@
   @media (max-width: 768px) {
     #sidebar {
       left: -270px;
-      
+
       &.collapsed {
         left: 0;
         width: var(--sidebar-collapsed-width) !important;
         min-width: var(--sidebar-collapsed-width) !important;
       }
-      
+
       &:not(.collapsed) {
         left: 0;
         width: var(--sidebar-width) !important;
@@ -303,8 +302,7 @@
 
 // Additional global styles for smooth transitions
 * {
-  transition: 
-    background-color var(--transition-time) ease,
+  transition: background-color var(--transition-time) ease,
     color var(--transition-time) ease;
 }
 
@@ -313,7 +311,7 @@ body {
   &.dark-mode {
     background-color: #121212;
   }
-  
+
   &.light-mode {
     background-color: #f8f9fc;
   }
@@ -323,17 +321,17 @@ body {
   margin: 15px 0;
   display: flex;
   align-items: center;
-  
+
   span {
     margin-right: 10px;
     font-weight: 500;
   }
-  
+
   .color-options {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    
+
     button {
       padding: 6px 12px;
       border-radius: 4px;
@@ -341,11 +339,11 @@ body {
       cursor: pointer;
       font-size: 12px;
       transition: transform 0.2s;
-      
+
       &:hover {
         transform: scale(1.05);
       }
-      
+
       &:active {
         transform: scale(0.98);
       }
