@@ -1,0 +1,131 @@
+.product-container {
+  padding: 20px;
+  overflow-x: auto;
+
+  .loading-text {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #666;
+  }
+
+  .product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    thead {
+      background-color: #4a6fa5;
+      color: white;
+
+      th {
+        padding: 12px 15px;
+        text-align: left;
+        font-weight: 500;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        &:hover {
+          background-color: #f1f1f1;
+        }
+
+        td {
+          padding: 12px 15px;
+          vertical-align: middle;
+
+          .main-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+          }
+
+          .side-images-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+
+            .side-image {
+              width: 40px;
+              height: 40px;
+              object-fit: cover;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-table {
+      display: block;
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        display: block;
+
+        tr {
+          display: block;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          padding: 10px;
+
+          td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            border-bottom: 1px dotted #ddd;
+            text-align: right;
+
+            &:before {
+              content: attr(data-label);
+              font-weight: bold;
+              margin-right: auto;
+              color: #4a6fa5;
+            }
+
+            &:last-child {
+              border-bottom: none;
+              flex-direction: column;
+              align-items: flex-end;
+
+              &:before {
+                align-self: flex-start;
+                margin-bottom: 5px;
+              }
+            }
+
+            .main-image {
+              width: 50px;
+              height: 50px;
+            }
+
+            .side-images-container {
+              .side-image {
+                width: 35px;
+                height: 35px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

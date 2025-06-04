@@ -119,6 +119,31 @@ const AdminUirender = ({ children }) => {
                   </div>
                   <div>admin</div>
                 </MenuItem>
+                <SubMenu
+                  title="Product Add"
+                  icon={<FaGem />}
+                  open={activeSubMenu === "components"}
+                  onOpenChange={() => handleSubMenuToggle("components")}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      navigate("/AdminProductCreate");
+                    }}
+                  >
+                    Add Product
+                  </MenuItem>
+                  {/* <SubMenu title="Component 2">
+                    <MenuItem>Sub Component 2.1</MenuItem>
+                    <MenuItem>Sub Component 2.2</MenuItem>
+                  </SubMenu> */}
+                  <MenuItem
+                    onClick={() => {
+                      navigate("/viewProduct");
+                    }}
+                  >
+                    View Product
+                  </MenuItem>
+                </SubMenu>
 
                 <SubMenu
                   title="Charts"
@@ -147,20 +172,6 @@ const AdminUirender = ({ children }) => {
                   >
                     Bar charts
                   </MenuItem>
-                </SubMenu>
-
-                <SubMenu
-                  title="Components"
-                  icon={<FaGem />}
-                  open={activeSubMenu === "components"}
-                  onOpenChange={() => handleSubMenuToggle("components")}
-                >
-                  <MenuItem>Component 1</MenuItem>
-                  <SubMenu title="Component 2">
-                    <MenuItem>Sub Component 2.1</MenuItem>
-                    <MenuItem>Sub Component 2.2</MenuItem>
-                  </SubMenu>
-                  <MenuItem>Component 3</MenuItem>
                 </SubMenu>
 
                 <SubMenu

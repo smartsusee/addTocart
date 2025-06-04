@@ -18,18 +18,18 @@ export default function Login() {
       .then((res) => {
         let token = res.data.token;
         if (!token) {
-         toast.error("token not found, please check your credentials", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
-          return ;
+          toast.error("token not found, please check your credentials", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+          return;
         }
         if (token) {
           const decoded = jwtDecode(token);

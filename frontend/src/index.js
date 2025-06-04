@@ -13,6 +13,16 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { ToastContainer } from "react-toastify";
 import "./assets/Css/Chart.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const ignoreResizeObserverError = () => {
+  const originalError = console.error;
+  console.error = (...args) => {
+    if (/ResizeObserver/.test(args[0])) {
+      return;
+    }
+    originalError(...args);
+  };
+};
+
 root.render(
   <React.StrictMode>
     <App />
@@ -21,6 +31,10 @@ root.render(
     {/* <Checkout /> */}
   </React.StrictMode>
 );
+
+
+
+ignoreResizeObserverError();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

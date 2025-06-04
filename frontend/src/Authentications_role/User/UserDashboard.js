@@ -59,9 +59,11 @@ ChartJS.register(
 );
 
 const UserDashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <UserUirender>hio</UserUirender>
+      <UserUirender></UserUirender>
     </>
   );
 };
